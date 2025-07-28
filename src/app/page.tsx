@@ -34,7 +34,7 @@ export default async function CoursePage() {
           <div className="lg:col-span-1 space-y-6">
             <CourseTrailer />
             <CourseCTA />
-            <CourseChecklist />
+           <CourseChecklist checklist={course.data.checklist} />
           </div>
         </div>
       </div>

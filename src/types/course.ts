@@ -4,8 +4,11 @@ export interface Medium {
 }
 
 export interface Checklist {
-  title: string;
-  description: string;
+ id: string
+  icon: string
+  text: string
+  list_page_visibility: boolean
+  color: string
 }
 
 export interface Seo {

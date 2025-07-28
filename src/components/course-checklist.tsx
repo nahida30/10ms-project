@@ -1,17 +1,20 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Video, Clock, Award, Users, FileText, BookOpen, PenTool, Phone, CheckCircle } from "lucide-react"
+import { CheckCircle } from "lucide-react"
 
-export function CourseChecklist() {
-  const features = [
-    { icon: Video, text: "৫০+ ভিডিও লেকচার" },
-    { icon: Clock, text: "৫০ ঘন্টা কন্টেন্ট" },
-    { icon: FileText, text: "৩০টি লেকচার শিট" },
-    { icon: BookOpen, text: "১০টি রিডিং মক টেস্ট" },
-    { icon: PenTool, text: "১০টি লিসেনিং মক টেস্ট" },
-    { icon: Award, text: "সার্টিফিকেট" },
-    { icon: Users, text: "এক্সক্লুসিভ কমিউনিটি" },
-    { icon: Phone, text: "২৪/৭ সাপোর্ট" },
-  ]
+interface ChecklistItem {
+  id: string
+  icon: string
+  text: string
+  list_page_visibility: boolean
+  color: string
+}
+
+interface CourseChecklistProps {
+  checklist: ChecklistItem[]
+}
+
+export function CourseChecklist({ checklist }: CourseChecklistProps) {
+  const visibleItems = checklist.filter((item) => item.list_page_visibility)
 
   return (
     <Card>
@@ -19,16 +22,27 @@ export function CourseChecklist() {
         <h3 className="font-bold text-lg mb-4">এই কোর্সে যা পাবেন</h3>
 
         <div className="space-y-3">
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon
-            return (
-              <div key={index} className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                <IconComponent className="w-4 h-4 text-gray-600 flex-shrink-0" />
-                <span className="text-sm text-gray-700">{feature.text}</span>
-              </div>
-            )
-          })}
+         {checklist
+  .filter((item) => item.list_page_visibility)
+  .map((item) => (
+    <div key={item.id} className="flex items-center space-x-3">
+      {/* Colored Icon */}
+      <img
+        src={item.icon}
+        alt="icon"
+        className="w-5 h-5 flex-shrink-0"
+        style={{ filter: `drop-shadow(0 0 2px ${item.color})` }}
+      />
+
+      {/* Checklist Text */}
+      <span className="text-sm text-gray-700">{item.text}</span>
+
+      {/* Optional: Show ID for debugging */}
+      {/* <span className="text-xs text-gray-400 ml-auto">ID: {item.id}</span> */}
+    </div>
+))}
+
+
         </div>
 
         <div className="mt-6 pt-4 border-t border-gray-200">
@@ -41,7 +55,6 @@ export function CourseChecklist() {
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-600 mb-2">আরও জানতে চান?</p>
           <div className="flex items-center justify-center space-x-2 text-green-600">
-            <Phone className="w-4 h-4" />
             <span className="font-semibold">কল করুন: ১৬৯১০</span>
           </div>
         </div>
