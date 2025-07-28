@@ -7,7 +7,7 @@ import { LearningOutcomes } from "@/components/learning-outcomes";
 import { ExclusiveFeatures } from "@/components/exclusive-features";
 import { CourseDetails } from "@/components/course-details";
 import { CourseTrailerCarousel } from "@/components/course-trailer";
-import { CourseCTA } from "@/components/course-cta";
+import  CourseCTA from "@/components/course-cta";
 import { CourseChecklist } from "@/components/course-checklist";
 import { fetchIELTSCourse } from "@/lib/api"; 
 
