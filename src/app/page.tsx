@@ -1,7 +1,7 @@
 import { PageHeader } from "@/components/page-header";
 import CourseTitle from "@/components/course-title"
 import  CourseDescription  from "@/components/course-description";
-import { InstructorsSection } from "@/components/instructors-section";
+import  InstructorsSection  from "@/components/instructors-section";
 import { CourseLayout } from "@/components/course-layout";
 import { LearningOutcomes } from "@/components/learning-outcomes";
 import { ExclusiveFeatures } from "@/components/exclusive-features";
