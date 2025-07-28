@@ -1,7 +1,12 @@
 export interface Medium {
-  url: string;
-  type: string;
+  name: string;
+  resource_type: string;
+  resource_value: string;
+  thumbnail_url: string;
+  url?: string;
+  type?: string;
 }
+
 
 export interface Checklist {
  id: string
