@@ -1,9 +1,47 @@
-import Image from "next/image";
+import { PageHeader } from "@/components/page-header";
+import { CourseTitle } from "@/components/course-title";
+import { CourseDescription } from "@/components/course-description";
+import { InstructorsSection } from "@/components/instructors-section";
+import { CourseLayout } from "@/components/course-layout";
+import { LearningOutcomes } from "@/components/learning-outcomes";
+import { ExclusiveFeatures } from "@/components/exclusive-features";
+import { CourseDetails } from "@/components/course-details";
+import { CourseTrailer } from "@/components/course-trailer";
+import { CourseCTA } from "@/components/course-cta";
+import { CourseChecklist } from "@/components/course-checklist";
+import { fetchIELTSCourse } from "@/lib/api"; // make sure to import it
 
-export default function Home() {
+export default async function CoursePage() {
+  const course = await fetchIELTSCourse("en");
+  console.log("Course API response:", course);
+
   return (
- <>
- <h1 className="text-red-500 bg-amber-400">Hello</h1>
- </>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header (Not Mandatory) - Full Width */}
+      <PageHeader />
+
+      {/* Main Content Layout */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Main Content */}
+          <div className="lg:col-span-2 space-y-6">
+            <CourseTitle />
+            <CourseDescription />
+            <InstructorsSection />
+            <CourseLayout />
+            <LearningOutcomes />
+            <ExclusiveFeatures />
+            <CourseDetails />
+          </div>
+
+          {/* Right Column - Sidebar */}
+          <div className="lg:col-span-1 space-y-6">
+            <CourseTrailer />
+            <CourseCTA />
+            <CourseChecklist />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
